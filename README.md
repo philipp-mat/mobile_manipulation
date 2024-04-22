@@ -6,7 +6,7 @@
 roslaunch mobile_panda_simulation mobile_panda_sim.launch
 
 # 2. Terminal
-roslaunch mobile_panda_controller mobile_panda_controller_sim.launch controller:=mobile_panda_twist_controller
+roslaunch mobile_panda_controller_sim mobile_panda_controller_sim.launch controller:=twist_controller_sim
 
 # 3. Terminal
 rqt (robot stering to change position)
@@ -17,7 +17,10 @@ rqt (robot stering to change position)
 roslaunch mobile_panda_simulation mobile_panda_sim.launch
 
 # 2. Terminal
-roslaunch mobile_panda_controller mobile_panda_controller_sim.launch controller:=mobile_panda_path_controller
+roslaunch mobile_panda_controller_sim mobile_panda_controller_sim.launch controller:=path_controller_sim
+
+# 3. Terminal
+rqt (robot stering to change position)
 
 # Rebuild workspace
 cd /home/philipp/mobile_manipulation/mobile_manipulation_ws
