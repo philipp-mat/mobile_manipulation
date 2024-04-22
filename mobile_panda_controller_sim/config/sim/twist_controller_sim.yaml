@@ -1,0 +1,9 @@
+# P-Control constant
+kp: 300
+
+# Feedforward constant
+kv: 50
+
+cmd_topic: /cmd_vel
+eef_link: /panda_sim_hand
+panda_link0: /panda_sim_link0

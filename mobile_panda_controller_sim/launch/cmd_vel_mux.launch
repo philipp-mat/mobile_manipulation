@@ -1,0 +1,3 @@
+<launch>
+    <node name="cmd_vel_mux" pkg="mobile_panda_controller_sim" type="cmd_vel_mux.py" output="screen"/>
+</launch>

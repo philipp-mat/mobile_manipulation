@@ -1,0 +1,43 @@
+trajectory: 2 # 1 = line
+              # 2 = wave
+              # 3 = circle Achtung Bug: Leider kann die mobile Plattform nur viertel Kreise fahren. Wenn die Plattform weiter als ein viertel Umdrehung 
+              # eines Kreises fährt fängt sie an stark hin und her zu rotieren
+
+# Endpunkt des Pfades gemessen von der Startposition des Endeffektors (wird nur bei line und wave beachtet)
+g_x: -1.5
+g_y: 0.3
+g_z: 0
+
+# Orientierung welche der am Ende des Pfades haben soll im Bezug zur Startorientierung des Endeffektors
+# In der Simulation funktionieren Orientierungsänderungen nicht
+roll: 0
+pitch: 0 # [0, 0.3]
+yaw: 0
+
+# Anzahl aus wie vielen Punkten der Pfad bestehen soll
+number_of_path_points: 100
+
+# Radius des Kreise wird natürlich nur beachtet, wenn in trajectory = 3 ist
+circle_radius: 1
+
+redundancy_method: 2 # 1 = none
+                     # 2 = null space
+                     # 3 = weighted pseudoinverse
+
+# wird nur beachtet, wenn als redundancy_method = 3 ausgewählt wurde 
+# je höher das Gewicht umso umso höhere Geschwindigkeiten werden berechnet
+# 0 heißt keine Geschwindigkeit
+weight_arm: 1
+
+# wird nur beachtet, wenn als redundancy_method = 2 ausgewählt wurde. Umso höher das gewicht desto näher bleibt der Franka arm an seiner Ausgangsposition
+nullspace_stiffness_: 50 # 20
+
+# P-Regler Konstante, welche den Arm auf den gewünschten Punkt auf den Pfad zieht
+kp_arm: 30
+
+# P-Regler Konstante, welche die Plattform auf den gewünschten Punkt auf den Pfad zieht
+kp_base: 0.5
+
+cmd_topic: /cmd_vel
+eef_link: /panda_sim_hand
+panda_link0: /panda_sim_link0

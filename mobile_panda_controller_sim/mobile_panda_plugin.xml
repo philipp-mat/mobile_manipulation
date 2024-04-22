@@ -1,0 +1,16 @@
+<library path="lib/libmobile_panda_controller_sim">
+	<class name="twist_controller_sim/TwistControllerSim"
+           type="twist_controller_sim::TwistControllerSim"
+           base_class_type="controller_interface::ControllerBase">
+      <description>
+        Twist controller
+      </description>
+    </class>
+	<class name="path_controller_sim/PathControllerSim"
+           type="path_controller_sim::PathControllerSim"
+           base_class_type="controller_interface::ControllerBase">
+      <description>
+        Path controller
+      </description>
+    </class>
+  </library>

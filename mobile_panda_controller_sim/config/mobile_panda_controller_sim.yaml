@@ -1,0 +1,34 @@
+twist_controller_sim:
+    type: twist_controller_sim/TwistControllerSim
+    joint_names:
+        - panda_joint1
+        - panda_joint2
+        - panda_joint3
+        - panda_joint4
+        - panda_joint5
+        - panda_joint6
+        - panda_joint7
+
+path_controller_sim:
+    type: path_controller_sim/PathControllerSim
+    joint_names:
+        - panda_joint1
+        - panda_joint2
+        - panda_joint3
+        - panda_joint4
+        - panda_joint5
+        - panda_joint6
+        - panda_joint7
+
+franka_state_controller:
+  type: franka_control/FrankaStateController
+  publish_rate: 30  # [Hz]
+  arm_id: panda
+  joint_names:
+    - panda_joint1
+    - panda_joint2
+    - panda_joint3
+    - panda_joint4
+    - panda_joint5
+    - panda_joint6
+    - panda_joint7
