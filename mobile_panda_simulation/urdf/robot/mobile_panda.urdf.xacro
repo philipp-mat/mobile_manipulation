@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="utf-8"?>
+<robot xmlns:xacro="http://www.ros.org/wiki/xacro" name="panda_mobile">
+  <xacro:arg name="arm_id_1" default="panda_sim" />
+
+  <xacro:include filename="$(find mobile_panda_simulation)/urdf/arm/panda_arm_sim.xacro"/>
+  <xacro:include filename="$(find mobile_panda_simulation)/urdf/hand/hand_sim.xacro"/>
+  <xacro:include filename="$(find mobile_panda_simulation)/urdf/base/mobile_platform.xacro" />
+
+  <xacro:include filename="$(find mobile_panda_simulation)/urdf/config/panda.gazebo.xacro"/>
+  <xacro:include filename="$(find mobile_panda_simulation)/urdf/config/panda.control.xacro"/>
+
+  <!-- Add base to fixed frame -->
+  <link name="odom" />
+  <xacro:mobile_base robot_name="base" parent="odom"/>
+
+  <!-- arm with gripper -->
+  <xacro:panda_arm arm_id="$(arg arm_id_1)" connected_to="base_link_H"  xyz="0.2 0 0.2" rpy="0 0 ${-pi}"/>
+  <xacro:hand ns="$(arg arm_id_1)" rpy="0 0 ${-pi/4}" connected_to="$(arg arm_id_1)_link8" safety_distance="0.03"/>
+  
+</robot>

@@ -1,0 +1,11 @@
+<?xml version="1.0"?>
+<robot xmlns:xacro="http://ros.org/wiki/xacro">
+    <xacro:property name="width" value="0.6" />
+    <xacro:property name="width_base_V" value="0.19" />
+    <xacro:property name="len" value="0.72" />
+    <xacro:property name="len_base_V" value="0.34" />
+    <xacro:property name="height" value="0.4" />
+    <xacro:property name="mass_base" value="20" />
+
+ 
+</robot>

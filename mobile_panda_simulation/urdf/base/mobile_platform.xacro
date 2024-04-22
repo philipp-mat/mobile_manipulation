@@ -1,0 +1,92 @@
+<?xml version="1.0"?>
+<robot xmlns:xacro="http://ros.org/wiki/xacro">
+
+    <xacro:macro name="mobile_base" params="robot_name parent"/>
+
+    <xacro:include filename="propertys.urdf.xacro"/>
+    <xacro:include filename="materials.urdf.xacro"/>
+
+    <!-- Robot Model -->
+
+	<!-- add virtual link -->
+
+	<link name="base_virtual_x_link" />
+
+    <link name="base_virtual_y_link" />
+
+	<joint name="base_x_joint" type="prismatic">
+            <parent link="odom" />
+            <child link="base_virtual_x_link" />
+            <axis xyz="1 0 0" />
+            <limit lower="-10" upper="10" velocity="1" effort="1" />
+        </joint>
+
+        <joint name="base_y_joint" type="prismatic">
+            <parent link="base_virtual_x_link" />
+            <child link="base_virtual_y_link" />
+            <axis xyz="0 1 0" />
+            <limit lower="-10" upper="10" velocity="1" effort="1" />
+        </joint>
+
+        <joint name="base_yaw_joint" type="continuous">
+            <parent link="base_virtual_y_link" />
+            <child link="base_link" />
+            <axis xyz="0 0 1" />
+            <limit velocity="1" effort="1" />
+        </joint>
+
+	<!-- add virtual link -->
+
+    <link name="base_link">
+    </link>
+
+    <link name="base_footprint">
+        <visual>
+            <geometry>
+                <box size="${width} ${len} ${height}"/>
+            </geometry>
+            <material name="Blue"/>
+        </visual>
+        <collision>
+            <geometry>
+                <box size="${width} ${len} ${height}"/>
+            </geometry>
+        </collision>
+        <inertial>
+            <origin xyz="0.0 0.0 0.0" rpy="0.0 0.0 0.0"/>
+            <mass value="${mass_base}"/>
+            <inertia ixx="${1/12 * mass_base*(width*width + height*height)}" ixy="0.0" ixz="0.0" iyy="${1/12 * mass_base*(height*height + len*len)}" iyz="0.0" izz="${1/12 * mass_base*(width*width + len*len)}"/>
+        </inertial>
+    </link>
+
+    <joint name="base_to_base_joint" type="fixed">
+        <parent link="base_link"/>
+        <child link="base_footprint"/>
+        <origin xyz="0.1 0.0 0.0"/>
+    </joint>
+
+    <link name="base_link_H">
+        <visual>
+            <geometry>
+                <box size="${width_base_V} ${len_base_V} ${height}"/>
+            </geometry>
+            <material name="Blue"/>
+        </visual>
+        <collision>
+            <geometry>
+                <box size="${width_base_V} ${len_base_V} ${height}"/>
+            </geometry>
+        </collision>
+        <inertial>
+            <mass value="0.1"/>
+            <inertia ixx="0.4" ixy="0.0" ixz="0.0" iyy="0.4" iyz="0.0" izz="0.4"/>
+            </inertial>
+    </link>
+
+    <joint name="base_to_base_H" type="fixed">
+        <parent link="base_footprint"/>
+        <child link="base_link_H"/>
+        <origin xyz="${-width_base_V/2 - width/2} 0 0" rpy="0 0 0"/>
+    </joint>
+
+</robot>

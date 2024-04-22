@@ -1,0 +1,19 @@
+<launch>
+	<group ns="simulation">
+        <arg name="model" default="$(find mobile_panda_simulation)/urdf/robot/mobile_panda.urdf.xacro" />
+        <param name="robot_description" command="$(find xacro)/xacro $(arg model)" />
+    
+        <node pkg="joint_state_publisher" type="joint_state_publisher" name="joint_state_publisher">
+            <rosparam param="source_list">[joint_states, base/joint_states]</rosparam>
+        </node>
+
+        <node pkg="robot_state_publisher" type="robot_state_publisher" name="robot_state_publisher" />
+
+        <node pkg="rviz" type="rviz" name="rviz" args="-d $(find mobile_panda_simulation)/config/mobile_panda.rviz" />
+
+        <node pkg="mobile_panda_simulation" type="mobile_panda_simulation" name="mobile_panda_simulation" output="screen">
+        <rosparam file="$(find mobile_panda_simulation)/config/mobile_panda_simulation.yaml" command="load" />
+        <remap from="/simulation/odom" to="/odom"/>
+        </node>
+	</group>
+</launch>

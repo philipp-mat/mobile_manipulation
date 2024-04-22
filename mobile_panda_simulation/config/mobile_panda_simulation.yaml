@@ -1,0 +1,4 @@
+initial_position_x: 0 #lrt = 90.0, #100, # 2
+initial_position_y: 0 #lrt = 90.0, # 100, # 2
+initial_orientation: 0 # 3.1415
+controller_frequency: 100
