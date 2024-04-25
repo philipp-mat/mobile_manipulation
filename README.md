@@ -17,6 +17,9 @@ rqt
 
 ```
 
+## Block diagram of twist controller
+![Bock diagram](.graphics/TwistControllerBlockDiagram.PNG)
+
 ## Mobile Panda path controller without redudancy resolution
 ![WaveGIF](.graphics/WaveGIF.gif)
 
