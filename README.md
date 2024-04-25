@@ -1,5 +1,5 @@
 ## Mobile Panda twist controller
-![MoveLinearCut](.graphics/MoveLinearCut.gif)
+![MoveLinearCutGIF](.graphics/MoveLinearCutGIF.gif)
 
 # 1. Terminal
 roslaunch mobile_panda_simulation mobile_panda_sim.launch
